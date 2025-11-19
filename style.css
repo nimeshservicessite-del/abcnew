@@ -1,0 +1,323 @@
+/* -----------------------------------------------------------
+   ROOT + GLOBAL
+----------------------------------------------------------- */
+:root{
+  --bg: #0b1220;
+  --card: #0f1724;
+  --accent: #00c2a8;
+  --accent-2: #ffd166;
+  --muted: #94a3b8;
+  --glass: rgba(255,255,255,0.04);
+  --radius: 14px;
+  --maxw: 1100px;
+
+  font-family: 'Inter', system-ui, Segoe UI, Roboto, sans-serif;
+}
+
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),#07101a);
+  color:#e6eef6;
+  line-height:1.45;
+}
+
+.wrap{
+  max-width:var(--maxw);
+  margin:30px auto;
+  padding:28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-text h1,
+.brand-text p {
+  margin: 0; 
+  padding: 0;
+  line-height: 1.1;
+}
+
+/* -----------------------------------------------------------
+   HEADER
+----------------------------------------------------------- */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img{
+  width:56px;
+  height:56px;
+  border-radius:10px;
+  object-fit:cover;
+  box-shadow:0 6px 18px rgba(0,0,0,0.6);
+}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:18px;
+  font-weight:600;
+  position:relative;
+  padding-bottom:4px;
+}
+
+/* ---- NAV UNDERLINE (HOVER + ACTIVE) ---- */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a.active::after {
+  width: 100%;
+}
+
+nav a.cta{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  padding:8px 14px;
+  border-radius:10px;
+  color:#081019;
+}
+
+/* -----------------------------------------------------------
+   HERO
+----------------------------------------------------------- */
+.hero{
+  background:linear-gradient(180deg,rgba(255,255,255,0.02),var(--glass));
+  padding:28px;
+  border-radius:var(--radius);
+  box-shadow:0 10px 40px rgba(2,6,23,0.6);
+}
+
+.kicker{
+  display:inline-block;
+  padding:6px 10px;
+  background:rgba(0,0,0,0.25);
+  border-radius:999px;
+  color:var(--accent);
+  font-weight:700;
+  font-size:12px;
+}
+
+h2{margin:12px 0 8px;font-size:28px;}
+p.lead{color:var(--muted);margin:0 0 18px;}
+
+.cta-row{
+  display:flex;
+  gap:12px;
+  margin-top:12px;
+}
+
+/* Buttons */
+.btn{
+  padding:12px 16px;
+  border-radius:12px;
+  border:0;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .2s ease;
+}
+
+.btn.primary{background:var(--accent);color:#021015;}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);}
+
+.btn:hover{
+  transform:scale(1.06);
+}
+
+/* -----------------------------------------------------------
+   SERVICES GRID
+----------------------------------------------------------- */
+.services{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.service{
+  background:var(--card);
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 8px 30px rgba(2,6,23,0.6);
+  transition:transform .35s;
+}
+
+.service:hover{
+  transform:translateY(-8px);
+}
+
+.service p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.price{
+  margin-top:12px;
+  font-weight:800;
+}
+
+/* -----------------------------------------------------------
+   POST GRID (3 SQUARES)
+----------------------------------------------------------- */
+.post-grid{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.post-box{
+  background:var(--card);
+  border-radius:12px;
+  aspect-ratio:1/1;
+  box-shadow:0 8px 30px rgba(2,6,23,0.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px dashed rgba(255,255,255,0.15);
+}
+
+.post-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+/* -----------------------------------------------------------
+   ABOUT
+----------------------------------------------------------- */
+.about{
+  margin-top:28px;
+  padding:20px;
+  border-radius:12px;
+  background:linear-gradient(90deg,rgba(0,0,0,0.22),transparent);
+}
+
+/* -----------------------------------------------------------
+   FOOTER
+----------------------------------------------------------- */
+footer{
+  margin-top:34px;
+  padding:18px;
+  border-radius:12px;
+  background:rgba(0,0,0,0.2);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* -----------------------------------------------------------
+   QR GLOW
+----------------------------------------------------------- */
+.qr-box img{
+  width:190px;
+  border-radius:14px;
+  padding:8px;
+  background:#0f1724;
+  animation:qrGlow 2.2s ease-in-out infinite alternate;
+  box-shadow:0 0 18px rgba(0,255,200,0.25);
+}
+
+@keyframes qrGlow{
+  0%{box-shadow:0 0 10px rgba(0,255,200,0.3); border:2px solid rgba(0,255,200,0.5);}
+  100%{box-shadow:0 0 20px rgba(0,255,200,0.6); border:2px solid rgba(0,255,200,0.9);}
+}
+
+/* -----------------------------------------------------------
+   IMAGE VIEWER
+----------------------------------------------------------- */
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+.image-viewer img {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 12px;
+}
+
+/* -----------------------------------------------------------
+   MOBILE RESPONSIVE
+----------------------------------------------------------- */
+@media (max-width:768px){
+
+  .wrap{margin:0;padding:20px;}
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  nav a{margin:0;font-size:15px;}
+
+  h2{font-size:22px;}
+  p.lead{font-size:15px;}
+
+  .cta-row{
+    flex-direction:column;
+    width:100%;
+    align-items:center;
+  }
+
+  .cta-row .btn{
+    width:90%;
+    max-width:350px;
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .post-grid{
+    grid-template-columns:1fr;
+  }
+
+  footer{
+    flex-direction:column;
+    gap:18px;
+    text-align:left;
+  }
+}
+
+/* Extra small phones */
+@media (max-width:460px){
+  .brand img{width:46px;height:46px;}
+  h2{font-size:20px;}
+}

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>Nimesh Rashmika — Social Media Boosting</title>
+  <link rel='stylesheet' href='style.css'>
+
+  <style>
+    /* --- Post Grid --- */
+    .post-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .post-box {
+      background: var(--card);
+      border-radius: 12px;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px dashed rgba(255,255,255,0.15);
+      cursor: pointer;
+    }
+
+    .post-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    @media(max-width: 768px){
+      .post-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Copy popup */
+    .copy-alert {
+      background: var(--accent);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #021015;
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      z-index: 99999;
+      font-weight: 700;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.5);
+    }
+  </style>
+</head>
+
+<body>
+<div class='wrap'>
+
+<header>
+ <div class="brand">
+  <img src="https://i.postimg.cc/C5KXwhyH/logo.png" alt="Logo">
+
+  <div class="brand-text">
+    <h1>Nimesh Creations</h1>
+    <p>Social Media Boosting • Fast • Safe</p>
+  </div>
+</div>
+
+
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href='services.html'>Services</a>
+    <a href='about.html'>About</a>
+    <a href='contact.html'>Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class='hero reveal'>
+    <span class='kicker'>FAST DELIVERY</span>
+
+    <h2><span class='typing' id='type-target'></span></h2>
+
+    <p class='lead'>
+      🚀 Boost Your Facebook, YouTube, TikTok, Instagram & WhatsApp Channels
+      with Fast, Safe, and High-Quality Engagement That Delivers Real Results.
+      Reach More Viewers, Grow Faster, and Stand Out From the Competition.
+    </p>
+
+    <div class='cta-row'>
+      <button class='btn primary btn-pop' onclick="location.href='contact.html'">Order Now</button>
+      <button class='btn ghost btn-pop' onclick="location.href='services.html'">View Services</button>
+    </div>
+
+    <!-- POST GRID -->
+    <div class="post-grid reveal">
+  <div class="post-box" onclick="openImage('https://i.postimg.cc/x1ddbC43/dsxs.png')">
+    <img src="https://i.postimg.cc/x1ddbC43/dsxs.png" alt="">
+  </div>
+
+  <div class="post-box" onclick="openImage('https://i.postimg.cc/gcB80CJ7/fggbtd.png')">
+    <img src="https://i.postimg.cc/gcB80CJ7/fggbtd.png" alt="">
+  </div>
+
+  <!-- COMING SOON POST -->
+  <div class="post-box">
+    <span class="coming-soon">Post Coming Soon</span>
+  </div>
+</div>
+
+  </section>
+</main>
+
+<footer>
+  <div>
+    <strong>Contact</strong>
+
+    <!-- EMAIL (text only) -->
+    <div onclick="copyEmail()" style="cursor:pointer; margin-bottom:6px; color:var(--muted); font-size:15px;">
+      <span>Email - </span>
+      <span style="color: var(--accent); font-weight:600;">Mail Me</span>
+    </div>
+
+    <div style='color:var(--muted)'>
+      WhatsApp:
+      <a href='https://wa.me/message/56ICDVRILVWQA1' style='color:var(--accent);text-decoration:none'>Message me</a>
+    </div>
+  </div>
+
+  <div style="width:100%; text-align:center; color:var(--muted); margin-top:10px;">
+    © <span id='year'></span> Nimesh Creations. All rights reserved.
+  </div>
+</footer>
+
+</div>
+
+<script src='script.js'></script>
+
+<!-- FULL IMAGE VIEWER -->
+<div id="image-viewer" class="image-viewer" onclick="closeImage()">
+  <img id="full-image" src="" alt="">
+</div>
+
+<!-- EMAIL POPUP -->
+<div id="emailCopyAlert" class="copy-alert">Email Copied!</div>
+
+<script>
+function copyEmail() {
+  const email = "contact.nimesh.rashmika@gmail.com";
+
+  navigator.clipboard.writeText(email).then(() => {
+    let popup = document.getElementById("emailCopyAlert");
+    popup.style.display = "block";
+
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 1500);
+  });
+}
+</script>
+<script>
+function openImage(src) {
+  const viewer = document.getElementById("image-viewer");
+  const fullImg = document.getElementById("full-image");
+  fullImg.src = src;
+  viewer.style.display = "flex";
+}
+
+function closeImage() {
+  document.getElementById("image-viewer").style.display = "none";
+}
+</script>
+<!-- redeploy -->
+
+</body>
+</html>

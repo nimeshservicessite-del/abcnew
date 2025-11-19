@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>Contact — Nimesh Creations</title>
+  <link rel='stylesheet' href='style.css'>
+
+  <style>
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 14px 0;
+      font-size: 16px;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .contact-item img.icon {
+      width: 22px;
+      opacity: 0.9;
+    }
+
+    .qr-box {
+      margin-top: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .qr-box img {
+      width: 190px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      transition: transform .2s;
+    }
+
+    .qr-box img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Fullscreen QR popup */
+    #full-qr-viewer {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    #full-qr-viewer img {
+      max-width: 85%;
+      max-height: 85%;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .copy-alert {
+      background: var(--accent);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #021015;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      z-index: 99999;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+<div class='wrap'>
+
+<header>
+  <div class="brand">
+    <img src="https://i.postimg.cc/C5KXwhyH/logo.png" alt="Logo">
+
+    <div class="brand-text">
+      <h1>Nimesh Creations</h1>
+      <p>Social Media Boosting • Fast • Safe</p>
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+
+  </nav>
+</header>
+
+
+<main>
+  <h2 class='reveal'>Contact</h2>
+  <p class='lead reveal'>Scan the QR or use the contact details:</p>
+
+  <!-- QR CODE -->
+  <div class="qr-box reveal" onclick="openQR()">
+    <img src="https://i.postimg.cc/d0hLBmrt/Whats-App-Image-2025-11-16-at-15-31-14-8df1b413.jpg" alt="QR Code">
+  </div>
+
+  <!-- PHONE -->
+  <div class="contact-item reveal" onclick="copyText('+94727030781')">
+    <img class="icon" src="https://img.icons8.com/ios-filled/50/ffffff/phone.png" alt="">
+    +94 72 703 0781
+  </div>
+
+  <!-- EMAIL -->
+  <div class="contact-item reveal" onclick="copyText('contact.nimesh.rashmika@gmail.com')">
+    <img class="icon" src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="">
+    contact.nimesh.rashmika@gmail.com
+  </div>
+
+  <!-- LOCATION -->
+<div class="contact-item reveal">
+  <img class="icon" src="https://img.icons8.com/ios-filled/50/ffffff/marker.png" alt="">
+  Wariyapola, Kurunegala
+</div>
+
+  
+</main>
+
+<footer>
+  <div style="width:100%; text-align:center; color:var(--muted); margin-top:10px;">
+      © <span id='year'></span> Nimesh Creations. All rights reserved.
+  </div>
+</footer>
+
+</div>
+
+<!-- Fullscreen QR Popup -->
+<div id="full-qr-viewer" onclick="closeQR()">
+  <img src="https://i.postimg.cc/d0hLBmrt/Whats-App-Image-2025-11-16-at-15-31-14-8df1b413.jpg" alt="">
+</div>
+
+<!-- Copy alert -->
+<div id="copyAlert" class="copy-alert">Copied!</div>
+
+<script src='script.js'></script>
+
+<script>
+  function openQR() {
+    document.getElementById("full-qr-viewer").style.display = "flex";
+  }
+
+  function closeQR() {
+    document.getElementById("full-qr-viewer").style.display = "none";
+  }
+
+  function copyText(text) {
+    navigator.clipboard.writeText(text);
+
+    let alertBox = document.getElementById("copyAlert");
+    alertBox.style.display = "block";
+
+    setTimeout(() => {
+      alertBox.style.display = "none";
+    }, 1500);
+  }
+</script>
+
+</body>
+</html>
