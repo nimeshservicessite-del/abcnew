@@ -50,3 +50,55 @@ function closeImage() {
     }, 1500);
   }
 </script>
+
+const audio = new Audio('https://audio.com/nimesh-rashmika/audio/eternxlkz-sente-mais-super-slowed-reverb-eternxlkz-youtube'); // Replace with your music link
+const musicBtn = document.getElementById('music-toggle');
+let isPlaying = false;
+
+// Check if music is already playing (if user already interacted on any page)
+if (localStorage.getItem('isPlaying') === 'true') {
+    audio.play();
+    isPlaying = true;
+    musicBtn.classList.remove('paused');
+} else {
+    audio.pause();
+    isPlaying = false;
+    musicBtn.classList.add('paused');
+}
+
+// Music Toggle Logic
+musicBtn.addEventListener('click', () => {
+    if (isPlaying) {
+        audio.pause();
+        musicBtn.classList.add('paused');
+        isPlaying = false;
+        localStorage.setItem('isPlaying', 'false'); // Store the state
+    } else {
+        audio.play().then(() => {
+            musicBtn.classList.remove('paused');
+            isPlaying = true;
+            localStorage.setItem('isPlaying', 'true'); // Store the state
+        });
+    }
+});
+
+// Try Autoplay on Load (optional)
+window.addEventListener('load', () => {
+    audio.volume = 0.4; // Set default volume
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(_ => {
+            isPlaying = true;
+            musicBtn.classList.remove('paused');
+        }).catch(error => {
+            console.log("Autoplay prevented by browser policy.");
+            document.body.addEventListener('click', function startMusic() {
+                audio.play();
+                isPlaying = true;
+                musicBtn.classList.remove('paused');
+                document.body.removeEventListener('click', startMusic);
+            }, { once: true });
+        });
+    }
+});
