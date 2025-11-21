@@ -51,7 +51,7 @@ function closeImage() {
   }
 </script>
 
-const audio = new Audio('https://audio.com/nimesh-rashmika/audio/eternxlkz-sente-mais-super-slowed-reverb-eternxlkz-youtube'); // Replace with your music link
+const audio = new Audio('https://drive.google.com/uc?export=download&id=141T3DyqmAggW2CfwCqOcLNtwgvdMEOOD'); // Replace with your music link
 const musicBtn = document.getElementById('music-toggle');
 let isPlaying = false;
 
